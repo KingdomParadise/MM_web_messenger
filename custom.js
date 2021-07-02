@@ -1,42 +1,8 @@
 $(document).ready(function () {
   var chat_history = "";
   var flowchat = 1;
-  function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return result;
-  }
+  var username = makeid(10);
 
-  function setCookie(charid) {
-    document.cookie ="username="+charid;
-  }
-  function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-function checkCookie() {
-  let user = getCookie("username");
-  if (user != "") {
-    return true;
-  } else {
-    return false;
-  }
-}
   $("#sendMessage").click(function (e) {
     
     if(flowchat==1){
@@ -63,7 +29,7 @@ function checkCookie() {
       $("#direct-chat-messages").html(chat_history);
 
       var formdata = new FormData();
-      formdata.append("chatid", "username");
+      formdata.append("chatid", username);
       formdata.append("message", chat);
       $.ajax({
         url: "http://127.0.0.1:8000",
