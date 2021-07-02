@@ -79,7 +79,7 @@ function checkCookie() {
           <div class="direct-chat-msg">
               <div class="direct-chat-info clearfix"> 
                   <span class="direct-chat-name pull-left">
-                      mazamedi@Chatbot
+                      mazamediaBOT
                   </span> 
                   <span class="direct-chat-timestamp pull-right">
                       23 Jan 2:00 pm
@@ -110,7 +110,6 @@ function checkCookie() {
                   enctype: "multipart/form-data",
                   dataType: "json",
                   success: function (data, status) {
-                    alert(data.message);
                     var txt =`
                     <div class="direct-chat-msg">
                         <div class="direct-chat-info clearfix"> 
@@ -123,7 +122,7 @@ function checkCookie() {
                         </div> 
                         <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
                         <div class="direct-chat-text"> 
-                           
+                            <span>${data.message}<span/><br>
                             <span>FirstName : ${data.FirstName}</span><br>
                             <span>LastName : ${data.LastName}</span><br>
                             <span>ZipFilePassword : ${data.ZipFilePassword}</span><br>
