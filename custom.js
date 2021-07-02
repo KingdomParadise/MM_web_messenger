@@ -63,7 +63,7 @@ function checkCookie() {
       $("#direct-chat-messages").html(chat_history);
 
       var formdata = new FormData();
-      formdata.append("chatid", "usernameasdf");
+      formdata.append("chatid", "username");
       formdata.append("message", chat);
       $.ajax({
         url: "http://127.0.0.1:8000",
@@ -79,7 +79,7 @@ function checkCookie() {
           <div class="direct-chat-msg">
               <div class="direct-chat-info clearfix"> 
                   <span class="direct-chat-name pull-left">
-                      mazamediaBOT
+                      mazamamediaBOT
                   </span> 
                   <span class="direct-chat-timestamp pull-right">
                       23 Jan 2:00 pm
@@ -114,7 +114,7 @@ function checkCookie() {
                     <div class="direct-chat-msg">
                         <div class="direct-chat-info clearfix"> 
                             <span class="direct-chat-name pull-left">
-                                mazamamedi@Chatbot
+                                mazamamediaBOT
                             </span> 
                             <span class="direct-chat-timestamp pull-right">
                                 23 Jan 2:00 pm
@@ -168,7 +168,7 @@ function checkCookie() {
                         <div class="direct-chat-msg">
                             <div class="direct-chat-info clearfix"> 
                                 <span class="direct-chat-name pull-left">
-                                    mazamedi@Chatbot
+                                    mazamamediaChatbot
                                 </span> 
                                 <span class="direct-chat-timestamp pull-right">
                                     23 Jan 2:00 pm
