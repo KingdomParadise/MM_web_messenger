@@ -168,7 +168,7 @@ function checkCookie() {
                         <div class="direct-chat-msg">
                             <div class="direct-chat-info clearfix"> 
                                 <span class="direct-chat-name pull-left">
-                                    mazamamediaChatbot
+                                    mazamamediaBOT
                                 </span> 
                                 <span class="direct-chat-timestamp pull-right">
                                     23 Jan 2:00 pm
@@ -190,7 +190,7 @@ function checkCookie() {
                         $("#direct-chat-messages").html(" ");
                         $("#direct-chat-messages").html(chat_history);
                         if(data.message == "Hurray that was a valid zip code! 🎉")
-                            flowchat = 4;
+                            flowchat = 2;
                         console.log(data);
                       },
                   });
@@ -203,13 +203,11 @@ function checkCookie() {
     });
     }
     if(flowchat==2){
-
+      //TODO
       
     }
     if(flowchat==3){
-      // var chat = $("#message").val();
-      // $("#message").val('');
-      
+      //TODO
     }
   });
 });
