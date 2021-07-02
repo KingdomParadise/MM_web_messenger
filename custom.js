@@ -4,6 +4,8 @@ $(document).ready(function () {
   var username = makeid(10);
 
   $("#message").keypress(function (e) {
+    var dt = new Date();
+    var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
     var keycode = (e.keyCode ? e.keyCode : e.which);
     if (keycode == '13'){
       if( flowchat==1){
@@ -16,7 +18,7 @@ $(document).ready(function () {
                         User
                     </span> 
                     <span class="direct-chat-timestamp pull-left">
-                        23 Jan 2:05 pm
+                        ${time}
                     </span> 
                 </div> 
                 <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">
@@ -49,7 +51,7 @@ $(document).ready(function () {
                         mazamamediaBOT
                     </span> 
                     <span class="direct-chat-timestamp pull-right">
-                        23 Jan 2:00 pm
+                        ${time}
                     </span> 
                 </div> 
                 <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
@@ -84,7 +86,7 @@ $(document).ready(function () {
                                   mazamamediaBOT
                               </span> 
                               <span class="direct-chat-timestamp pull-right">
-                                  23 Jan 2:00 pm
+                                  ${time}
                               </span> 
                           </div> 
                           <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
@@ -138,7 +140,7 @@ $(document).ready(function () {
                                       mazamamediaBOT
                                   </span> 
                                   <span class="direct-chat-timestamp pull-right">
-                                      23 Jan 2:00 pm
+                                      ${time}
                                   </span> 
                               </div> 
                               <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
