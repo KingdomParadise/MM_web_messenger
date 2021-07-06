@@ -1,7 +1,18 @@
 $(document).ready(function () {
+  
   var chat_history = "";
   var flowchat = 1;
   var username = makeid(10);
+  
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+  }
 
   $("#message").keypress(function (e) {
     var dt = new Date();
@@ -156,10 +167,29 @@ $(document).ready(function () {
                           </div>
                         `;
                           chat_history += txt;
+                          
+                          txt = var txt =`
+                          <div class="direct-chat-msg">
+                              <div class="direct-chat-info clearfix"> 
+                                  <span class="direct-chat-name pull-left">
+                                      mazamamediaBOT
+                                  </span> 
+                                  <span class="direct-chat-timestamp pull-right">
+                                      ${time}
+                                  </span> 
+                              </div> 
+                              <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
+                              <div class="direct-chat-text"> 
+                                  <span>Here we go!!  🚘</span><br>
+                              </div>
+                          </div>
+                        `;
+
                           $("#direct-chat-messages").html(" ");
                           $("#direct-chat-messages").html(chat_history);
-                          if(data.message == "Hurray that was a valid zip code! 🎉")
-                              flowchat = 2;
+                          // if(data.message == "Hurray that was a valid zip code! 🎉")
+
+                          flowchat = 2;
                         },
                     });
   
