@@ -56,22 +56,43 @@ $(document).ready(function () {
         dataType: "json",
         success: function (data, status) {
           console.log(data.message);
-          txt =`
-              <div class="direct-chat-msg">
-                  <div class="direct-chat-info clearfix"> 
-                      <span class="direct-chat-name pull-left">
-                          mazamamediaBOT
-                      </span> 
-                      <span class="direct-chat-timestamp pull-right">
-                          ${time}
-                      </span> 
-                  </div> 
-                  <img class="direct-chat-img" src="chat.png" alt="message user image">
-                  <div class="direct-chat-text"> 
-                      ${data.message}
-                  </div>
-              </div>
-            `;
+          var txt = '';
+                if(data.message.slice(0,4)=="http"){
+                  txt +=`
+                    <div class="direct-chat-msg">
+                        <div class="direct-chat-info clearfix"> 
+                            <span class="direct-chat-name pull-left">
+                                mazamamediaBOT
+                            </span> 
+                            <span class="direct-chat-timestamp pull-right">
+                                ${time}
+                            </span> 
+                        </div> 
+                        <img class="direct-chat-img" src="chat.png" alt="message user image">
+                        <div class="direct-chat-text"> <a href = "${data.message}" target="_blank">
+                            Click here</a>
+                        </div>
+                    </div>
+                  `;
+                }
+                else{
+                  txt +=`
+                    <div class="direct-chat-msg">
+                        <div class="direct-chat-info clearfix"> 
+                            <span class="direct-chat-name pull-left">
+                                mazamamediaBOT
+                            </span> 
+                            <span class="direct-chat-timestamp pull-right">
+                                ${time}
+                            </span> 
+                        </div> 
+                        <img class="direct-chat-img" src="chat.png" alt="message user image">
+                        <div class="direct-chat-text"> 
+                            ${data.message}
+                        </div>
+                    </div>
+                  `;
+                }
 
           
           chat_history += txt;
