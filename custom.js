@@ -44,7 +44,6 @@
     $("#message").val('');
     $("#direct-chat-messages").html(" ");
     $("#direct-chat-messages").html(chat_history);
-    console.log(chat);
     var formdata = new FormData();
     formdata.append("chatid", username);
     formdata.append("message",chat);
@@ -75,7 +74,6 @@
           </div>
           `;      
         txt = '';
-        console.log(data.message)
         if (data.message.length==2){
           if(data.message[1]=="url"){
             txt +=(header+ `<div class="direct-chat-text"> <a href = "${data.message[0]}" target="_blank">
