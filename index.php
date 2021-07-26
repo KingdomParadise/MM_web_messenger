@@ -33,7 +33,7 @@
                                 <div class="input-group"> 
                                     <input type="text" id="message" name="message" placeholder="Type Message ..." class="form-control"> 
                                     <span class="input-group-btn"> 
-                                        <button type="submit" class="btn btn-warning btn-flat" id = "sendMessage">
+                                        <button type="submit" class="btn btn-warning btn-flat" id = "sendMessage" style="margin-top:0;">
                                             Send
                                         </button> 
                                     </span> 
