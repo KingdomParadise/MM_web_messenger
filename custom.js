@@ -74,6 +74,7 @@
           </div>
           `;      
         txt = '';
+        console.log(chat);
         if (data.message.length==2){
           if(data.message[1]=="url"){
             txt +=(header+ `<div class="direct-chat-text"> <a href = "${data.message[0]}" target="_blank">
@@ -99,11 +100,28 @@
           else if(data.message[1] == "normal_language_ES"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
 
-            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_English()">English</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="send_Spanish()">Spanish</button></div>'+footer);
-         
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_English()">English</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="send_Spanish()">Spanish</button>&nbsp;&nbsp;<button  class="btn btn-warning btn-flat" onclick="more_language()">More</button> </div>'+footer);
           }
+          else if(data.message[1] == "normal_language_CK"){
+            txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
+
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_Chinese()">Chinese</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="send_Korean()">Korean</button>&nbsp;&nbsp;<button  class="btn btn-warning btn-flat" onclick="more_language()">More</button> </div>'+footer);
+          }
+          else if(data.message[1] == "normal_language_JV"){ 
+            txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
+
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_Japanese()">Japanaese</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="send_Vietnames()">Vietnames</button> </div>'+footer);
+          }
+          
           else{
               txt +=(header+`<div class="direct-chat-text"> ${data.message[0]}</div>`+footer);
+          }
+        }
+        else if(data.message.length==3){
+          if(data.message[2]=="normal_check"){
+            txt+=(header+`<div class="direct-chat-text">`);
+
+            txt+=(`<div class="button-div"><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_check()"> ${data.message[0]} </button><br><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_continue()">  ${data.message[1]} </button> </div></div>`+footer);
           }
         }
         else{
@@ -224,4 +242,24 @@ function send_English(){
 function send_Spanish(){
   chat(username,"Spanish");
 }
-
+function send_Chinese(){
+  chat(username,"Chinese");
+}
+function send_Korean(){
+  chat(username,"Korean");
+}
+function send_Vietnames(){
+  chat(username,"Vietnamese");
+}
+function send_Japanese(){
+  chat(username,"Japanese");
+}
+function more_language(){
+  chat(username,"more languages");
+}
+function lifeline_check(){
+  chat(username,"");
+}
+function lifeline_continue(){
+  chat(username,"");
+}
