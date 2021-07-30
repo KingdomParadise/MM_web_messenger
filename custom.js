@@ -1,7 +1,7 @@
 
   var chat_history = "";
   var username = makeid(10);
-  var adult = "";
+
   
   function makeid(length) {
     var result           = '';
@@ -132,9 +132,9 @@
 
             for(var i = 1;i<data.message[0].length;i++)
               {
-                adult = data.message[0][i].replace(" ","");
+                var adult = data.message[0][i];
                 console.log(adult);
-                txt+=(`<button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="select_option("${adult}")"> ${data.message[0][i]} </button><br>`);
+                txt+=(`<button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="select_option('${adult}')">${data.message[0][i]}</button><br>`);
               }
 
             txt+=(`</div>` + footer);
@@ -284,8 +284,8 @@ function lifeline_check(){
 function check_status(){
   chat(username,"")
 }
-function select_option(adult){  
-  console.log(adult);
-  // if (data=="Parent"||data=="Child(+18)"||data=="Other Adult Relative"||data=="Adult Rommate"||data=="Other Adult"||data=="No Adult")
-  chat(username,adult);
+function select_option(data){  
+  console.log(data);
+   if (data=="Parent"||data=="Child(+18)"||data=="Other Adult Relative"||data=="Adult Rommate"||data=="Other Adult"||data=="No Adult")
+  chat(username,data);
 }
