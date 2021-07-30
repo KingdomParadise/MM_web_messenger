@@ -1,7 +1,7 @@
 
   var chat_history = "";
   var username = makeid(10);
-  var user_info_option = "";
+  var adult = "";
   
   function makeid(length) {
     var result           = '';
@@ -74,7 +74,6 @@
           </div>
           `;      
         txt = '';
-        console.log(chat);
         if (data.message.length==2){
           if(data.message[1]=="url"){
             txt +=(header+ `<div class="direct-chat-text"> <a href = "${data.message[0]}" target="_blank">
@@ -91,6 +90,11 @@
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
 
             txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="help">Help</button> </div>'+footer);
+          }
+          else if(data.message[1] == "normal_check"){
+            txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
+
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="check_status">Check Status</button> </div>'+footer);
           }
           else if (data.message[1]=="normal_yes_no"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
@@ -121,7 +125,19 @@
           if(data.message[2]=="normal_check"){
             txt+=(header+`<div class="direct-chat-text">`);
 
-            txt+=(`<div class="button-div"><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_check()"> ${data.message[0]} </button><br><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_continue()">  ${data.message[1]} </button> </div></div>`+footer);
+            txt+=(`<div class="button-div"><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_check()"> ${data.message[0]} </button><br><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_check()">${data.message[1]} </button> </div></div>`+footer);
+          }
+          if(data.message[1]=="LifelinePlans"||data.message[1]=="otherAdult"){
+            txt+=(header+`<div class="direct-chat-text">${data.message[0][0]}<br>`);
+
+            for(var i = 1;i<data.message[0].length;i++)
+              {
+                adult = data.message[0][i].replace(" ","");
+                console.log(adult);
+                txt+=(`<button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="select_option("${adult}")"> ${data.message[0][i]} </button><br>`);
+              }
+
+            txt+=(`</div>` + footer);
           }
         }
         else{
@@ -164,7 +180,12 @@
             }  
           }
           else{
-            
+            if (data.message.length==3){
+              if (data.message[2]=="normal_autoPass")
+              {
+                AutoEnter();
+              }  
+            }
           }
             
 
@@ -260,6 +281,11 @@ function more_language(){
 function lifeline_check(){
   chat(username,"");
 }
-function lifeline_continue(){
-  chat(username,"");
+function check_status(){
+  chat(username,"")
+}
+function select_option(adult){  
+  console.log(adult);
+  // if (data=="Parent"||data=="Child(+18)"||data=="Other Adult Relative"||data=="Adult Rommate"||data=="Other Adult"||data=="No Adult")
+  chat(username,adult);
 }
