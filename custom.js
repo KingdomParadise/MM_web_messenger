@@ -96,6 +96,11 @@
 
             txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="check_status()">Check Status</button> </div>'+footer);
           }
+          else if(data.message[1] == "normal_yes"){
+            txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
+
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_yes()">Check Status</button> </div>'+footer);
+          }
           else if (data.message[1]=="normal_yes_no"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
 
@@ -141,6 +146,13 @@
               }
 
             txt+=(`</div>` + footer);
+          }
+          if(data.message[1]=="CheckNVEligibility"){
+            txt+=(header)
+            for(var i = 0;i<data.message[0].length;i++){
+              txt+=(`<div class="direct-chat-text">${data.message[0][i]}</div>`);
+            }
+            txt+=footer;
           }
         }
         else{
