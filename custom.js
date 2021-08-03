@@ -89,12 +89,12 @@
           else if (data.message[1] == "normal_help"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
 
-            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="help">Help</button> </div>'+footer);
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="help()">Help</button> </div>'+footer);
           }
           else if(data.message[1] == "normal_check"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
 
-            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="check_status">Check Status</button> </div>'+footer);
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="check_status()">Check Status</button> </div>'+footer);
           }
           else if (data.message[1]=="normal_yes_no"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
@@ -116,7 +116,11 @@
 
             txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_Japanese()">Japanaese</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="send_Vietnames()">Vietnames</button> </div>'+footer);
           }
-          
+          else if(data.message[1]=="normal_restart_help_national"){
+            txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
+
+            txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="edit_personal_info()">Edit info</button> <span>&nbsp;&nbsp;<button  class="btn btn-warning btn-flat" onclick="restart()">Restart</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="help()">Help</button></div>'+footer);
+          }
           else{
               txt +=(header+`<div class="direct-chat-text"> ${data.message[0]}</div>`+footer);
           }
@@ -127,13 +131,12 @@
 
             txt+=(`<div class="button-div"><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_check()"> ${data.message[0]} </button><br><button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="lifeline_check()">${data.message[1]} </button> </div></div>`+footer);
           }
-          if(data.message[1]=="LifelinePlans"||data.message[1]=="otherAdult"){
+          if(data.message[1]=="LifelinePlans"||data.message[1]=="otherAdult"||data.message[1]=="selectOption"){
             txt+=(header+`<div class="direct-chat-text">${data.message[0][0]}<br>`);
 
             for(var i = 1;i<data.message[0].length;i++)
               {
                 var adult = data.message[0][i];
-                console.log(adult);
                 txt+=(`<button style="white-space:normal;width:100%;" class="btn btn-warning btn-flat" onclick="select_option('${adult}')">${data.message[0][i]}</button><br>`);
               }
 
@@ -285,7 +288,8 @@ function check_status(){
   chat(username,"")
 }
 function select_option(data){  
-  console.log(data);
-   if (data=="Parent"||data=="Child(+18)"||data=="Other Adult Relative"||data=="Adult Rommate"||data=="Other Adult"||data=="No Adult")
   chat(username,data);
+}
+function edit_personal_info(){
+  chat(username,"national Verfier");
 }
