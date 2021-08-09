@@ -48,7 +48,7 @@
     formdata.append("chatid", username);
     formdata.append("message",chat);
     $.ajax({
-      url: "http://127.0.0.1:8000/mazamamedia_chatbotapi/",
+      url: "http://3.84.239.72:8000/mazamamedia_chatbotapi/",
       method: "POST",
       data: formdata,
       processData: false,
@@ -108,7 +108,6 @@
           }
           else if(data.message[1] == "normal_language_ES"){
             txt+=(header+`<div class="direct-chat-text"> ${data.message[0]}</div><br>`);
-
             txt+=('<div class="button-div"><button  class="btn btn-warning btn-flat" onclick="send_English()">English</button> <span>&nbsp;&nbsp;<span><button  class="btn btn-warning btn-flat" onclick="send_Spanish()">Spanish</button>&nbsp;&nbsp;<button  class="btn btn-warning btn-flat" onclick="more_language()">More</button> </div>'+footer);
           }
           else if(data.message[1] == "normal_language_CK"){
